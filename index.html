@@ -1446,7 +1446,7 @@ FEEDBACK: [your detailed written feedback here — use HTML for formatting: <str
 }
 
 async function callClaude(prompt) {
-  const response = await fetch("https://api.anthropic.com/v1/messages", {
+  const response = await fetch("https://revision-ib-econ-p2.vercel.app/api/claude", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
