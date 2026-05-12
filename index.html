@@ -1455,8 +1455,9 @@ async function callClaude(prompt) {
       messages: [{ role: "user", content: prompt }]
     })
   });
-  if(!response.ok) throw new Error('API error ' + response.status);
   const data = await response.json();
+  if(!response.ok) throw new Error('API error ' + response.status + ': ' + JSON.stringify(data));
+  if(!data.content || !data.content[0]) throw new Error('Unexpected response: ' + JSON.stringify(data));
   return data.content[0].text;
 }
 
