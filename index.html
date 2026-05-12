@@ -1,0 +1,1612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IB Economics SL · Paper 2 Practice</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0a2540;
+  --blue: #1a6eb5;
+  --blue-light: #2d8dd4;
+  --blue-pale: #e8f4fd;
+  --green: #0f7c5a;
+  --green-light: #1aad7e;
+  --green-pale: #e6f7f1;
+  --teal: #0e6b7a;
+  --gold: #e8a020;
+  --red: #c0392b;
+  --red-pale: #fdf0ee;
+  --white: #ffffff;
+  --off-white: #f7fafc;
+  --grey-100: #eef2f7;
+  --grey-200: #dde5ef;
+  --grey-400: #8fa3bc;
+  --grey-600: #4a6480;
+  --text: #0d2137;
+  --text-soft: #3d5a73;
+  --shadow-sm: 0 2px 8px rgba(10,37,64,0.10);
+  --shadow-md: 0 6px 24px rgba(10,37,64,0.13);
+  --shadow-lg: 0 16px 48px rgba(10,37,64,0.18);
+  --radius: 12px;
+  --radius-lg: 18px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--navy);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+/* ── NAV ── */
+#topnav {
+  background: var(--navy);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  padding: 0 28px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  height: 58px;
+  position: sticky; top: 0; z-index: 100;
+}
+#topnav .brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem;
+  color: var(--white);
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  margin-right: 8px;
+}
+#topnav .brand span { color: var(--green-light); }
+.nav-btn {
+  background: none;
+  border: 1px solid rgba(255,255,255,0.18);
+  color: rgba(255,255,255,0.72);
+  border-radius: 8px;
+  padding: 5px 14px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.nav-btn:hover, .nav-btn.active {
+  background: var(--blue);
+  border-color: var(--blue);
+  color: white;
+}
+.nav-spacer { flex: 1; }
+#student-badge {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.85);
+  border-radius: 20px;
+  padding: 4px 14px;
+  font-size: 0.82rem;
+  font-weight: 500;
+}
+
+/* ── PAGES ── */
+.page { display: none; }
+.page.active { display: block; }
+
+/* ── WELCOME ── */
+#page-welcome {
+  min-height: 100vh;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(145deg, var(--navy) 0%, #0d3060 50%, #0a4a35 100%);
+  position: relative;
+  overflow: hidden;
+}
+#page-welcome.active { display: flex; }
+#page-welcome::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 70% 50% at 80% 30%, rgba(26,110,181,0.18), transparent),
+              radial-gradient(ellipse 50% 60% at 20% 80%, rgba(15,124,90,0.14), transparent);
+}
+.welcome-card {
+  background: rgba(255,255,255,0.97);
+  border-radius: var(--radius-lg);
+  padding: 52px 52px 44px;
+  max-width: 520px;
+  width: 90%;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  z-index: 1;
+}
+.welcome-ib-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--blue-pale);
+  border: 1px solid var(--blue);
+  color: var(--blue);
+  border-radius: 20px;
+  padding: 4px 14px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.welcome-card h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.1rem;
+  color: var(--navy);
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+.welcome-card .sub {
+  color: var(--text-soft);
+  font-size: 0.95rem;
+  margin-bottom: 30px;
+  line-height: 1.5;
+}
+.form-label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--navy);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.form-input {
+  width: 100%;
+  border: 2px solid var(--grey-200);
+  border-radius: 10px;
+  padding: 12px 16px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.2s;
+}
+.form-input:focus { border-color: var(--blue); }
+.btn-primary {
+  width: 100%;
+  background: linear-gradient(135deg, var(--blue) 0%, var(--blue-light) 100%);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 14px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: all 0.2s;
+  box-shadow: 0 4px 16px rgba(26,110,181,0.3);
+}
+.btn-primary:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(26,110,181,0.4); }
+.welcome-info {
+  margin-top: 22px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.info-chip {
+  background: var(--off-white);
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 0.8rem;
+  color: var(--text-soft);
+}
+.info-chip strong { display: block; color: var(--navy); font-size: 0.9rem; margin-bottom: 2px; }
+
+/* ── DASHBOARD ── */
+#page-dashboard { background: var(--off-white); min-height: 100vh; }
+.dash-header {
+  background: linear-gradient(135deg, var(--navy) 0%, #0d3060 100%);
+  padding: 36px 36px 80px;
+  position: relative;
+  overflow: hidden;
+}
+.dash-header::after {
+  content: '';
+  position: absolute;
+  bottom: -1px; left: 0; right: 0;
+  height: 60px;
+  background: var(--off-white);
+  border-radius: 50% 50% 0 0 / 60px 60px 0 0;
+}
+.dash-header h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.7rem;
+  color: white;
+  margin-bottom: 4px;
+}
+.dash-header p { color: rgba(255,255,255,0.65); font-size: 0.9rem; }
+.dash-body {
+  padding: 0 24px 40px;
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  margin-top: -40px;
+}
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 14px;
+  margin-bottom: 28px;
+}
+.stat-card {
+  background: white;
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  box-shadow: var(--shadow-sm);
+  text-align: center;
+}
+.stat-card .num {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--blue);
+  line-height: 1;
+}
+.stat-card .lbl { font-size: 0.78rem; color: var(--grey-600); margin-top: 4px; font-weight: 500; }
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  color: var(--navy);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.section-title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--grey-200);
+}
+.q-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 14px;
+  margin-bottom: 30px;
+}
+.q-card {
+  background: white;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  padding: 20px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.22s;
+  position: relative;
+  overflow: hidden;
+}
+.q-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px; height: 100%;
+  background: var(--grey-200);
+  transition: background 0.2s;
+}
+.q-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); border-color: var(--blue-pale); }
+.q-card:hover::before { background: var(--blue); }
+.q-card.done::before { background: var(--green); }
+.q-card.done { border-color: var(--green-pale); }
+.q-card .q-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 6px;
+}
+.q-card.done .q-label { color: var(--green); }
+.q-card h3 { font-size: 0.95rem; font-weight: 600; color: var(--navy); margin-bottom: 4px; }
+.q-card p { font-size: 0.8rem; color: var(--text-soft); line-height: 1.4; }
+.q-card .q-score {
+  margin-top: 10px;
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.score-pip {
+  background: var(--grey-100);
+  border-radius: 6px;
+  padding: 2px 8px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--grey-600);
+}
+.score-pip.done { background: var(--green-pale); color: var(--green); }
+.score-pip.retry { background: #fff3e0; color: #e67e22; }
+.tool-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+.tool-btn {
+  background: white;
+  border: 1.5px solid var(--grey-200);
+  color: var(--navy);
+  border-radius: 10px;
+  padding: 10px 18px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.87rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.tool-btn:hover { background: var(--navy); color: white; border-color: var(--navy); }
+.tool-btn.green-btn:hover { background: var(--green); border-color: var(--green); }
+
+/* ── QUESTION PAGE ── */
+#page-question { background: var(--off-white); min-height: 100vh; }
+.q-header {
+  background: white;
+  border-bottom: 1px solid var(--grey-200);
+  padding: 16px 28px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.q-header .q-id {
+  background: var(--blue-pale);
+  color: var(--blue);
+  border-radius: 8px;
+  padding: 4px 12px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.q-header h2 { font-size: 1rem; font-weight: 600; color: var(--navy); flex: 1; }
+.q-header .marks-badge {
+  background: var(--navy);
+  color: white;
+  border-radius: 8px;
+  padding: 4px 12px;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+.q-body {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 28px 24px 60px;
+}
+.extract-box {
+  background: white;
+  border-radius: var(--radius);
+  border-left: 4px solid var(--blue);
+  padding: 22px 24px;
+  margin-bottom: 28px;
+  box-shadow: var(--shadow-sm);
+}
+.extract-box h3 { font-family: 'Playfair Display', serif; font-size: 1.05rem; color: var(--navy); margin-bottom: 12px; }
+.extract-box p, .extract-box .para { font-size: 0.88rem; line-height: 1.7; color: var(--text-soft); margin-bottom: 8px; }
+.extract-box .para-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px; height: 20px;
+  background: var(--blue);
+  color: white;
+  border-radius: 50%;
+  font-size: 0.65rem;
+  font-weight: 700;
+  margin-right: 6px;
+  flex-shrink: 0;
+}
+.extract-row { display: flex; align-items: flex-start; margin-bottom: 8px; }
+.part-card {
+  background: white;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+.part-header {
+  background: var(--navy);
+  color: white;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.part-header .part-id { font-weight: 700; font-size: 0.9rem; }
+.part-header .part-marks {
+  background: rgba(255,255,255,0.15);
+  border-radius: 6px;
+  padding: 2px 10px;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+.part-body { padding: 20px; }
+.question-text {
+  font-size: 0.92rem;
+  color: var(--text);
+  line-height: 1.6;
+  margin-bottom: 16px;
+  padding: 14px 16px;
+  background: var(--grey-100);
+  border-radius: 8px;
+  border-left: 3px solid var(--blue);
+}
+.answer-textarea {
+  width: 100%;
+  min-height: 120px;
+  border: 2px solid var(--grey-200);
+  border-radius: 10px;
+  padding: 12px 14px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  color: var(--text);
+  resize: vertical;
+  outline: none;
+  transition: border-color 0.2s;
+  line-height: 1.6;
+}
+.answer-textarea:focus { border-color: var(--blue); }
+.mc-options { display: flex; flex-direction: column; gap: 8px; margin: 12px 0; }
+.mc-option {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 14px;
+  border: 2px solid var(--grey-200);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.18s;
+  font-size: 0.88rem;
+  line-height: 1.4;
+}
+.mc-option:hover { border-color: var(--blue-light); background: var(--blue-pale); }
+.mc-option.selected { border-color: var(--blue); background: var(--blue-pale); }
+.mc-option.correct { border-color: var(--green); background: var(--green-pale); }
+.mc-option.wrong { border-color: var(--red); background: var(--red-pale); }
+.mc-option input[type=checkbox], .mc-option input[type=radio] {
+  margin-top: 1px;
+  accent-color: var(--blue);
+  flex-shrink: 0;
+}
+.submit-part-btn {
+  background: linear-gradient(135deg, var(--blue) 0%, var(--blue-light) 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 22px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 12px;
+  transition: all 0.2s;
+}
+.submit-part-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+.submit-part-btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+.retry-btn {
+  background: none;
+  border: 1.5px solid var(--gold);
+  color: var(--gold);
+  border-radius: 8px;
+  padding: 6px 16px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-left: 10px;
+  transition: all 0.2s;
+}
+.retry-btn:hover { background: var(--gold); color: white; }
+
+/* ── FEEDBACK ── */
+.feedback-box {
+  margin-top: 16px;
+  border-radius: 10px;
+  padding: 18px 20px;
+  animation: fadeSlide 0.4s ease;
+}
+@keyframes fadeSlide { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+.feedback-box.loading {
+  background: var(--grey-100);
+  color: var(--grey-600);
+  font-size: 0.88rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.feedback-box.result {
+  background: white;
+  border: 1.5px solid var(--grey-200);
+}
+.feedback-box.retry-result {
+  background: #fff9f0;
+  border: 1.5px solid #f0c070;
+}
+.feedback-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.mark-badge {
+  background: var(--blue);
+  color: white;
+  border-radius: 8px;
+  padding: 4px 12px;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+.mark-badge.level1 { background: #e67e22; }
+.mark-badge.level2 { background: var(--blue); }
+.mark-badge.level3 { background: var(--green); }
+.feedback-header .fb-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--grey-600);
+}
+.feedback-text { font-size: 0.88rem; line-height: 1.7; color: var(--text-soft); }
+.feedback-text strong { color: var(--navy); }
+.feedback-text ul { margin: 8px 0 8px 18px; }
+.feedback-text li { margin-bottom: 4px; }
+.retry-note {
+  font-size: 0.75rem;
+  color: #c07818;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+/* ── SPINNER ── */
+.spinner {
+  width: 18px; height: 18px;
+  border: 2px solid var(--grey-200);
+  border-top-color: var(--blue);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  flex-shrink: 0;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── PROGRESS BAR ── */
+.progress-bar-wrap {
+  background: var(--grey-200);
+  border-radius: 6px;
+  height: 8px;
+  overflow: hidden;
+  margin-top: 8px;
+}
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--blue), var(--green-light));
+  border-radius: 6px;
+  transition: width 0.5s ease;
+}
+
+/* ── HEATMAP ── */
+.heatmap-grid {
+  display: grid;
+  gap: 6px;
+}
+.heatmap-row {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 8px;
+  align-items: center;
+}
+.heatmap-label { font-size: 0.8rem; color: var(--text-soft); font-weight: 500; }
+.heatmap-parts { display: flex; gap: 5px; flex-wrap: wrap; }
+.heat-pip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px; height: 36px;
+  border-radius: 8px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  cursor: default;
+}
+.heat-pip.none { background: var(--grey-100); color: var(--grey-400); }
+.heat-pip.partial { background: #fff3cd; color: #9a6700; }
+.heat-pip.good { background: var(--blue-pale); color: var(--blue); }
+.heat-pip.full { background: var(--green-pale); color: var(--green); }
+
+/* ── MODAL ── */
+.modal-overlay {
+  position: fixed; inset: 0;
+  background: rgba(10,37,64,0.65);
+  z-index: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: fadeIn 0.2s ease;
+}
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+.modal-box {
+  background: white;
+  border-radius: var(--radius-lg);
+  max-width: 540px;
+  width: 100%;
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+}
+.modal-head {
+  background: var(--navy);
+  color: white;
+  padding: 20px 24px;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+}
+.modal-body { padding: 24px; }
+.modal-body p { font-size: 0.9rem; color: var(--text-soft); margin-bottom: 14px; line-height: 1.6; }
+.modal-btn-row { display: flex; gap: 10px; margin-top: 16px; }
+.btn-sec {
+  flex: 1;
+  background: var(--grey-100);
+  border: none;
+  border-radius: 8px;
+  padding: 11px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  font-size: 0.88rem;
+  cursor: pointer;
+  color: var(--navy);
+  transition: all 0.2s;
+}
+.btn-sec:hover { background: var(--grey-200); }
+.btn-pri {
+  flex: 1;
+  background: var(--blue);
+  border: none;
+  border-radius: 8px;
+  padding: 11px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  font-size: 0.88rem;
+  cursor: pointer;
+  color: white;
+  transition: all 0.2s;
+}
+.btn-pri:hover { background: var(--blue-light); }
+
+/* ── EXPORT MODAL ── */
+.export-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 14px;
+}
+.export-card {
+  background: var(--off-white);
+  border: 2px solid var(--grey-200);
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.export-card:hover { border-color: var(--blue); background: var(--blue-pale); }
+.export-card .icon { font-size: 2rem; margin-bottom: 8px; }
+.export-card .title { font-weight: 600; font-size: 0.9rem; color: var(--navy); }
+.export-card .desc { font-size: 0.78rem; color: var(--text-soft); margin-top: 3px; }
+
+/* misc */
+.tag-section-a { background: var(--blue-pale); color: var(--blue); border-radius: 5px; padding: 1px 8px; font-size: 0.75rem; font-weight: 700; }
+.tag-section-b { background: var(--green-pale); color: var(--green); border-radius: 5px; padding: 1px 8px; font-size: 0.75rem; font-weight: 700; }
+.alert-box { background: #fff9e6; border: 1.5px solid #f0c040; border-radius: 8px; padding: 12px 16px; font-size: 0.85rem; color: #7a5800; margin-bottom: 14px; }
+.nav-done-indicator { width: 8px; height: 8px; border-radius: 50%; background: var(--green-light); display: inline-block; margin-left: 5px; }
+</style>
+</head>
+<body>
+
+<!-- TOP NAV -->
+<nav id="topnav">
+  <div class="brand">IB Economics <span>SL</span></div>
+  <button class="nav-btn active" id="nav-dash" onclick="showDash()">📊 Dashboard</button>
+  <div class="nav-spacer"></div>
+  <button class="nav-btn" onclick="openExport()">⬇ Export</button>
+  <div id="sync-indicator" style="display:none;align-items:center;gap:5px;font-size:0.75rem;color:rgba(255,255,255,0.55);">
+    <span id="sync-dot" style="width:7px;height:7px;border-radius:50%;background:var(--green-light);display:inline-block;"></span>
+    <span id="sync-text">Synced</span>
+  </div>
+  <div id="student-badge" style="display:none"></div>
+</nav>
+
+<!-- ═══════════════════════════════ WELCOME ═══════════════════════════════ -->
+<div class="page active" id="page-welcome">
+  <div class="welcome-card">
+    <div class="welcome-ib-badge">📘 IB Diploma Programme</div>
+    <h1>Economics SL<br>Paper 2 Practice</h1>
+    <p class="sub">May 2021 · Data Response · 45 minutes · 20 marks<br>Enter your preferred name to begin tracking your progress.</p>
+    <label class="form-label" for="name-input">Your Preferred Name</label>
+    <input class="form-input" id="name-input" type="text" placeholder="e.g. Alex" autocomplete="off" />
+    <button class="btn-primary" onclick="startSession()">Start Practice →</button>
+    <div class="welcome-info">
+      <div class="info-chip"><strong>Section A</strong>Choose 1 of Q1 or Q2</div>
+      <div class="info-chip"><strong>Section B</strong>Choose 1 of Q3 or Q4</div>
+      <div class="info-chip"><strong>20 marks</strong>Total available</div>
+      <div class="info-chip"><strong>AI Examiner</strong>Instant feedback</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ DASHBOARD ════════════════════════════ -->
+<div class="page" id="page-dashboard">
+  <div class="dash-header">
+    <h2 id="dash-greeting">Welcome back!</h2>
+    <p>IB Economics SL · Paper 2 · May 2021</p>
+  </div>
+  <div class="dash-body">
+    <!-- Stats -->
+    <div class="stats-row" id="stats-row"></div>
+
+    <!-- Progress -->
+    <div style="background:white;border-radius:var(--radius);padding:18px 20px;box-shadow:var(--shadow-sm);margin-bottom:28px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+        <span style="font-size:0.85rem;font-weight:600;color:var(--navy);">Overall Progress</span>
+        <span id="progress-label" style="font-size:0.82rem;color:var(--text-soft);"></span>
+      </div>
+      <div class="progress-bar-wrap"><div class="progress-bar" id="progress-bar" style="width:0%"></div></div>
+    </div>
+
+    <!-- Section A -->
+    <div class="section-title">Section A <span class="tag-section-a">Choose 1</span></div>
+    <div class="q-grid" id="sa-grid"></div>
+
+    <!-- Section B -->
+    <div class="section-title">Section B <span class="tag-section-b">Choose 1</span></div>
+    <div class="q-grid" id="sb-grid"></div>
+
+    <!-- Heatmap -->
+    <div class="section-title">Question Heatmap</div>
+    <div style="background:white;border-radius:var(--radius);padding:20px;box-shadow:var(--shadow-sm);margin-bottom:24px;">
+      <div class="heatmap-grid" id="heatmap"></div>
+      <div style="display:flex;gap:12px;margin-top:14px;flex-wrap:wrap;">
+        <span style="font-size:0.75rem;color:var(--text-soft);">
+          <span style="display:inline-block;width:12px;height:12px;border-radius:3px;background:var(--grey-100);margin-right:4px;"></span>Not attempted
+        </span>
+        <span style="font-size:0.75rem;color:var(--text-soft);">
+          <span style="display:inline-block;width:12px;height:12px;border-radius:3px;background:#fff3cd;margin-right:4px;"></span>Level 1
+        </span>
+        <span style="font-size:0.75rem;color:var(--text-soft);">
+          <span style="display:inline-block;width:12px;height:12px;border-radius:3px;background:var(--blue-pale);margin-right:4px;"></span>Level 2
+        </span>
+        <span style="font-size:0.75rem;color:var(--text-soft);">
+          <span style="display:inline-block;width:12px;height:12px;border-radius:3px;background:var(--green-pale);margin-right:4px;"></span>Level 3 / Full
+        </span>
+      </div>
+    </div>
+
+    <!-- Teacher tools -->
+    <div class="section-title">Teacher Tools</div>
+    <div class="tool-row">
+      <button class="tool-btn green-btn" onclick="openExport()">📊 Export Results</button>
+      <button class="tool-btn" onclick="resetAll()">↺ Reset All Progress</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ QUESTION PAGE ════════════════════════ -->
+<div class="page" id="page-question">
+  <div id="q-page-content"></div>
+</div>
+
+<!-- ═══════════════════════════════ EXPORT MODAL ═════════════════════════ -->
+<div id="export-modal" style="display:none">
+  <div class="modal-overlay" onclick="closeExport(event)">
+    <div class="modal-box" onclick="event.stopPropagation()">
+      <div class="modal-head">⬇ Export Results</div>
+      <div class="modal-body">
+        <p>Download the full results report for <strong id="export-name"></strong>. Includes all questions, scores, level bands, feedback, and re-attempt history.</p>
+        <div class="export-row">
+          <div class="export-card" onclick="exportCSV()">
+            <div class="icon">📊</div>
+            <div class="title">CSV / Spreadsheet</div>
+            <div class="desc">Open in Excel or Google Sheets</div>
+          </div>
+          <div class="export-card" onclick="exportPDF()">
+            <div class="icon">📄</div>
+            <div class="title">PDF Report</div>
+            <div class="desc">Print-ready teacher report</div>
+          </div>
+        </div>
+        <div class="modal-btn-row">
+          <button class="btn-sec" onclick="closeExport()">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ RESET MODAL ══════════════════════════ -->
+<div id="reset-modal" style="display:none">
+  <div class="modal-overlay" onclick="closeReset(event)">
+    <div class="modal-box" onclick="event.stopPropagation()">
+      <div class="modal-head">↺ Reset All Progress</div>
+      <div class="modal-body">
+        <p>This will permanently delete all answers, scores and feedback for this student. This cannot be undone.</p>
+        <div class="modal-btn-row">
+          <button class="btn-sec" onclick="closeReset()">Cancel</button>
+          <button class="btn-pri" style="background:var(--red);" onclick="confirmReset()">Yes, Reset Everything</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ════════════════════════════════════════════════════════════
+// DATA — all questions
+// ════════════════════════════════════════════════════════════
+const QUESTIONS = {
+  q1: {
+    id: 'q1', section: 'A', title: "China's Trade Reforms",
+    topic: "International Trade · Tariffs · Free Trade",
+    extract: `<p><span class="para-num">1</span>The Chinese government announced free trade measures — lower import tariffs on cars, soybeans and pharmaceuticals — to end a <strong>trade war</strong> with the United States (US).</p>
+    <p><span class="para-num">2</span>The US imposed anti-dumping tariffs on Chinese steel and aluminium, intensifying the dispute between the two largest economies.</p>
+    <p><span class="para-num">3</span>The trade war comes at a bad time given the slowdown in China's domestic demand. China's growth has relied less on investment and exports and more on <strong>consumption</strong> expenditure.</p>
+    <p><span class="para-num">4</span>Producers of many Chinese goods benefit from protectionist measures. Imports of industrial equipment, medical devices, tractors and vehicles face high tariffs.</p>
+    <p><span class="para-num">5</span>China's automobile production capacity is growing but the domestic market is becoming oversupplied. Chinese car manufacturers are seeking export markets and want reduced trade tensions.</p>
+    <p><span class="para-num">6</span>Some Chinese firms are adding advanced capabilities to compete globally and some believe they no longer require protection from international competition.</p>
+    <p><span class="para-num">7</span>Many Chinese firms remain dependent on <strong>imported factors of production</strong>. About 30% of Chinese exports use imported equipment and components. Reduced tariffs would lower prices for producers and consumers.</p>`,
+    parts: [
+      { id:'a_i', label:'(a)(i)', marks:2, type:'essay',
+        q:'Define the term <em>trade war</em> as indicated in the text (paragraph ①).',
+        markscheme:'Level 1 [1 mark]: Vague definition — the idea it is trade seen as unfair by one country leading to protectionism OR rising protectionism. Level 2 [2 marks]: Accurate definition — the imposition of a trade barrier by one country triggers a series of retaliations by trade partner(s).',
+        hint:'Think about the chain of actions and reactions between countries when tariffs are imposed.' },
+      { id:'a_ii', label:'(a)(ii)', marks:2, type:'essay',
+        q:'Define the term <em>consumption</em> as indicated in the text (paragraph ③).',
+        markscheme:'Level 1 [1 mark]: Vague — idea that it is a component of AD OR consumer spending. Level 2 [2 marks]: Accurate — spending by households/people on goods and services.',
+        hint:'Consumption is a component of Aggregate Demand (C + I + G + (X-M)).' },
+      { id:'b', label:'(b)', marks:4, type:'mc_diagram',
+        q:'Using an international trade diagram, explain how US tariffs could affect the export of Chinese steel and aluminium to the US (paragraph ②).',
+        mc_items: [
+          { text: 'The world supply curve (S_world) shifts upward to represent the tariff, raising the price in the US market', correct: true },
+          { text: 'The domestic demand curve (Dd) shifts to the left, reducing quantity demanded', correct: false },
+          { text: 'Imports to the US (Chinese exports) decrease from Q1Q4 to Q2Q3 as the tariff raises the price', correct: true },
+          { text: 'The tariff benefits Chinese steel producers by increasing the price they receive above the world price', correct: false },
+          { text: 'Domestic US production of steel increases (from Q1 to Q2) as higher prices make it more profitable', correct: true },
+          { text: 'The tariff is shown by shifting the domestic supply (Sd) curve to the right', correct: false }
+        ],
+        mc_instruction: 'Select ALL statements that correctly describe what happens in the international trade diagram:',
+        explanation_prompt: 'Now briefly explain in your own words why this happens (2–3 sentences):',
+        markscheme: 'Level 1 [1-2]: Correct diagram OR accurate written response showing S_world shifting up and Chinese exports falling. Level 2 [3-4]: Correct diagram AND written explanation that the tariff raises the price, reducing the quantity of Chinese steel/aluminium exported to the US from Q1Q4 to Q2Q3.',
+        hint: 'In an international trade diagram for the US, the world supply is horizontal at the world price. A tariff shifts this line upward.' },
+      { id:'c', label:'(c)', marks:4, type:'mc_diagram',
+        q:'Using a demand and supply diagram, explain how reduced tariffs on "imported factors of production" would affect the price of Chinese goods (paragraph ⑦).',
+        mc_items: [
+          { text: 'The supply curve shifts to the right (increases) because firms\' production costs fall', correct: true },
+          { text: 'The demand curve shifts to the right because consumers have more income', correct: false },
+          { text: 'The equilibrium price of Chinese goods decreases (falls)', correct: true },
+          { text: 'The equilibrium quantity of Chinese goods increases', correct: true },
+          { text: 'The supply curve shifts to the left because tariff removal reduces government revenue', correct: false },
+          { text: 'Lower tariffs on inputs reduce costs of production for Chinese firms', correct: true }
+        ],
+        mc_instruction: 'Select ALL statements that correctly describe the demand and supply diagram and its outcome:',
+        explanation_prompt: 'Explain the chain of causation in 2–3 sentences:',
+        markscheme: 'Level 1 [1-2]: Correct diagram showing supply shift right and price decrease OR accurate explanation. Level 2 [3-4]: Correct diagram AND explanation — lower tariff on imported factors of production reduces costs, shifting supply right, decreasing the price of Chinese goods.',
+        hint: 'Imported components are inputs/factors of production. Lower tariffs on these reduce firms\' costs of production.' },
+      { id:'d', label:'(d)', marks:8, type:'essay_extended',
+        q:'Using information from the text/data and your knowledge of economics, evaluate the impacts of free trade measures on China\'s economy.',
+        markscheme:'Level 1 [1-2]: Few relevant concepts. Basic knowledge only. Level 2 [3-5]: Relevant concepts in reasonable depth. Clear knowledge. Some application/analysis. Level 3 [6-8]: Relevant concepts in depth. Clear knowledge. Effective application/analysis. Synthesis/evaluation with evidence from text.\n\nBenefits: Lower risk of trade war retaliation; increased export revenue to offset consumption slowdown; lower prices/greater choice for consumers; lower input costs (30% of exports use imported components) boosting SRAS; increased competition driving innovation; more efficient resource allocation through specialisation.\n\nLimitations: More imports could lower AD and worsen economic slowdown; structural unemployment in manufacturing; loss of government tariff revenue; more competition for car manufacturers facing oversupply.',
+        hint: 'Command word is EVALUATE — you must present BOTH benefits AND limitations, then reach a supported judgement. Always reference the text (use paragraph numbers or data).',
+        word_guide: '300–400 words recommended' }
+    ]
+  },
+  q2: {
+    id: 'q2', section: 'A', title: "The Fall of the Indian Rupee",
+    topic: "Exchange Rates · Inflation · Current Account",
+    extract: `<p><span class="para-num">1</span>India's <strong>current account</strong> deficit widened — a 14% increase in export revenue could not offset rising import expenditure. The rupee has fallen by 13% over the same period.</p>
+    <p><span class="para-num">2</span>Higher oil prices (following OPEC production cuts) and higher spending on machinery and capital goods drove up import expenditure.</p>
+    <p><span class="para-num">3</span>Exports of services — especially software services — helped export revenue. However, more than 41% of India's total service exports are software services, with 90%+ restricted to the US and EU. A critical lack of diversification.</p>
+    <p><span class="para-num">4</span>The rupee <strong>depreciation</strong> — one of the steepest in recent years — caused fears of high inflation. An economist warned that higher oil prices and consumers' inflation expectations could worsen <em>inflationary pressures</em>.</p>
+    <p><span class="para-num">5</span>Despite calls for higher interest rates to <em>protect the rupee from further depreciation</em>, the Reserve Bank of India kept interest rates unchanged. Higher rates combined with falling confidence would dampen economic growth.</p>
+    <div style="margin-top:14px;background:var(--grey-100);border-radius:8px;padding:14px;">
+    <strong>Table 1: Selected Economic Indicators — India</strong>
+    <table style="width:100%;border-collapse:collapse;margin-top:8px;font-size:0.82rem;">
+    <tr style="background:var(--navy);color:white;"><th style="padding:6px 10px;text-align:left;">Indicator</th><th style="padding:6px 10px;">2016</th><th style="padding:6px 10px;">2017</th><th style="padding:6px 10px;">2018</th></tr>
+    <tr style="background:white;"><td style="padding:6px 10px;">Inflation rate (%)</td><td style="padding:6px 10px;text-align:center;">4.5</td><td style="padding:6px 10px;text-align:center;">3.6</td><td style="padding:6px 10px;text-align:center;">4.7</td></tr>
+    <tr style="background:var(--grey-100);"><td style="padding:6px 10px;">Real GDP growth rate (%)</td><td style="padding:6px 10px;text-align:center;">7.1</td><td style="padding:6px 10px;text-align:center;">6.7</td><td style="padding:6px 10px;text-align:center;">7.3</td></tr>
+    </table></div>`,
+    parts: [
+      { id:'a_i', label:'(a)(i)', marks:2, type:'essay',
+        q:'Define the term <em>current account</em> as indicated in the text (paragraph ①).',
+        markscheme:'Level 1 [1]: A measure of money flows from international trade OR a measure of the balance of trade. Level 2 [2]: A measure of the net flow of funds from trade in goods and services, income and transfers with the rest of the world.',
+        hint:'The current account is one component of the Balance of Payments. Think about what kinds of transactions it records.' },
+      { id:'a_ii', label:'(a)(ii)', marks:2, type:'essay',
+        q:'Define the term <em>depreciation</em> as indicated in the text (paragraph ④).',
+        markscheme:'Level 1 [1]: The idea that the exchange rate falls. Level 2 [2]: A decrease in the value/price of one currency in a floating exchange rate system, due to market forces.',
+        hint:'Depreciation applies specifically to floating exchange rate systems — distinguish it from devaluation.' },
+      { id:'b', label:'(b)', marks:4, type:'mc_diagram',
+        q:'Using an AD/AS diagram, explain how an increase in oil prices "could worsen inflationary pressures" (paragraph ④).',
+        mc_items: [
+          { text: 'SRAS shifts to the left because oil is a major cost of production for firms', correct: true },
+          { text: 'AD shifts to the right due to higher consumer spending on fuel', correct: false },
+          { text: 'The price level increases (cost-push inflation)', correct: true },
+          { text: 'Real GDP/output falls as SRAS shifts left', correct: true },
+          { text: 'LRAS shifts to the right because higher oil prices signal more production', correct: false },
+          { text: 'Higher oil prices reduce firms\' profits, causing them to reduce output (shown by leftward SRAS shift)', correct: true }
+        ],
+        mc_instruction: 'Select ALL statements that correctly describe the AD/AS diagram showing the impact of higher oil prices:',
+        explanation_prompt: 'Explain in 2–3 sentences how higher oil prices cause cost-push inflation:',
+        markscheme: 'Level 1 [1-2]: AD/AS diagram showing SRAS/AS shift left and price level rise OR explanation of cost-push inflation. Level 2 [3-4]: Correct diagram AND explanation that higher oil price → higher cost of production → SRAS shifts left → price level rises (cost-push inflation).',
+        hint: 'Oil is an input/factor of production. Rising input costs shift the SRAS curve.' },
+      { id:'c', label:'(c)', marks:4, type:'mc_diagram',
+        q:'Using an exchange rate diagram, explain how higher interest rates could "protect the rupee from further depreciation" (paragraph ⑤).',
+        mc_items: [
+          { text: 'The demand curve for Indian rupees shifts to the right as foreigners seek higher returns', correct: true },
+          { text: 'The supply of rupees increases as Indians invest abroad for higher returns', correct: false },
+          { text: 'The exchange rate of the rupee appreciates (rises) as demand increases', correct: true },
+          { text: 'Higher interest rates attract portfolio investment/saving from foreign investors', correct: true },
+          { text: 'The supply curve for rupees shifts left, directly causing appreciation', correct: false },
+          { text: 'Higher interest rates make India less attractive for foreign investors', correct: false }
+        ],
+        mc_instruction: 'Select ALL statements that correctly describe the exchange rate diagram showing the effect of higher interest rates:',
+        explanation_prompt: 'Explain the mechanism in 2–3 sentences:',
+        markscheme: 'Level 1 [1-2]: Exchange rate diagram showing demand for rupee shifting right causing appreciation OR explanation. Level 2 [3-4]: Correct diagram AND explanation — higher interest rates attract foreign saving/portfolio investment, increasing demand for rupees, causing rupee to appreciate.',
+        hint: 'Think about what attracts foreign investors to a currency. Higher returns on savings → increased demand for that currency.' },
+      { id:'d', label:'(d)', marks:8, type:'essay_extended',
+        q:'Using information from the text/data and your knowledge of economics, discuss the possible economic consequences on the Indian economy of a depreciating rupee.',
+        markscheme:'Level 1 [1-2]: Few concepts, basic knowledge. Level 2 [3-5]: Reasonable depth, some analysis with text reference. Level 3 [6-8]: Effective analysis, synthesis/evaluation, clear text references including Table 1.\n\nBenefits: Helps close current account deficit (exports cheaper, imports dearer); cheaper software exports in foreign currency → higher demand; could capture new markets beyond US/EU; keeps India competitive if other currencies also depreciate.\n\nLimitations: Oil demand is inelastic → depreciation worsens current account deficit further; higher imported capital/oil prices → cost-push inflation (inflation already rising to 4.7% in 2018 per Table 1); higher capital goods prices slow potential growth; GDP growth is strong so export boost may worsen demand-pull inflation.',
+        hint: 'Command word is DISCUSS — offer a balanced review. Use Table 1 data (inflation trends, GDP growth) and paragraph references. Consider both the J-curve effect and Marshall-Lerner condition implicitly.',
+        word_guide: '300–400 words recommended' }
+    ]
+  },
+  q3: {
+    id: 'q3', section: 'B', title: "Angola's Economic Reforms",
+    topic: "Development Economics · Market-Oriented Policies",
+    extract: `<p><span class="para-num">1</span>Following an oil price crash in 2014, Angola endured a <strong>recession</strong>, dramatic inflation, and shortages of foreign currency. Angola is highly dependent on oil export revenues.</p>
+    <p><span class="para-num">2</span>Angola's president proposed reforms: tax incentives for foreign investment, <strong>privatization</strong> of telecoms and railways, expanded infrastructure with private sector involvement, and banking sector reform.</p>
+    <p><span class="para-num">3</span>A 20% devaluation of the kwanza signals commitment to attracting FDI. Angola has a fixed exchange rate; the overvalued kwanza had depleted foreign currency reserves.</p>
+    <p><span class="para-num">4</span>Future economic growth is likely to be low. High borrowing costs, corruption and poor infrastructure persist. Angola has failed to exploit its vast agricultural potential and remains heavily dependent on falling oil revenues.</p>
+    <p><span class="para-num">5</span>Living conditions are poor: inflation above 25%, about 40% in absolute poverty, high unemployment — especially in rural areas. The government plans to encourage <em>investment in rural areas</em> to reduce regional inequality. However, proposals include <em>removing some subsidies on food</em> and introducing ad valorem taxes to reduce public debt.</p>
+    <p><span class="para-num">6</span>Angola remains the third-largest economy in sub-Saharan Africa and the second-largest public spender in the region.</p>`,
+    parts: [
+      { id:'a_i', label:'(a)(i)', marks:2, type:'essay',
+        q:'Define the term <em>recession</em> as indicated in the text (paragraph ①).',
+        markscheme:'Level 1 [1]: General slowdown in economic activity. Level 2 [2]: At least two consecutive quarters of negative economic growth/falling real GDP, OR a sustained decline in economic activity.',
+        hint:'The technical definition involves a specific number of consecutive quarters.' },
+      { id:'a_ii', label:'(a)(ii)', marks:2, type:'essay',
+        q:'Define the term <em>privatization</em> as indicated in the text (paragraph ②).',
+        markscheme:'Level 1 [1]: When the government no longer owns a company. Level 2 [2]: The government sells state-owned/public enterprises/firms/assets to the private sector.',
+        hint:'Think about the direction of ownership transfer — from whom to whom?' },
+      { id:'b', label:'(b)', marks:4, type:'mc_diagram',
+        q:'Using a demand and supply diagram, explain the impact on households of "removing some subsidies on food" (paragraph ⑤).',
+        mc_items: [
+          { text: 'The supply curve shifts to the left as firms\' costs of production increase (subsidy removed)', correct: true },
+          { text: 'The demand curve shifts to the left because households have less income', correct: false },
+          { text: 'The equilibrium price of food increases', correct: true },
+          { text: 'The equilibrium quantity of food decreases', correct: true },
+          { text: 'The supply curve shifts to the right as firms no longer receive the subsidy', correct: false },
+          { text: 'Removing subsidies raises costs for food producers, which is passed on to consumers as higher prices', correct: true }
+        ],
+        mc_instruction: 'Select ALL statements that correctly describe the demand and supply diagram for food after removing subsidies:',
+        explanation_prompt: 'Explain the impact on Angolan households in 2–3 sentences:',
+        markscheme: 'Level 1 [1-2]: Diagram with supply shift left and higher price/lower quantity OR explanation. Level 2 [3-4]: Correct diagram AND explanation — subsidy removal increases production costs → supply shifts left → higher food price and lower quantity for households.',
+        hint: 'A subsidy effectively lowers producers\' costs. Removing it reverses this effect.' },
+      { id:'c', label:'(c)', marks:4, type:'mc_diagram',
+        q:'Using a Lorenz curve diagram, explain the likely impact on income distribution of "plans to encourage investment in rural areas" (paragraph ⑤).',
+        mc_items: [
+          { text: 'The Lorenz curve moves closer to the line of perfect equality', correct: true },
+          { text: 'The Gini coefficient falls (decreases), indicating less inequality', correct: true },
+          { text: 'The Lorenz curve moves further away from the line of perfect equality', correct: false },
+          { text: 'Rural investment raises wages and employment in rural areas, reducing the urban-rural income gap', correct: true },
+          { text: 'The area between the Lorenz curve and the line of equality decreases', correct: true },
+          { text: 'The Lorenz curve stays the same because rural investment only benefits a few people', correct: false }
+        ],
+        mc_instruction: 'Select ALL statements that correctly describe the Lorenz curve and its movement after rural investment:',
+        explanation_prompt: 'Explain why rural investment affects income distribution in 2–3 sentences:',
+        markscheme: 'Level 1 [1-2]: Lorenz curve moving closer to line of perfect equality OR explanation. Level 2 [3-4]: Correct diagram (curve closer to line of equality) AND explanation — investment in rural areas raises wages/employment, reducing the gap with urban areas, making income distribution more equal.',
+        hint: 'Rural areas in Angola have higher unemployment and poverty. Investment there specifically helps the lower-income population.' },
+      { id:'d', label:'(d)', marks:8, type:'essay_extended',
+        q:'Using information from the text/data and your knowledge of economics, evaluate the effectiveness of market-oriented policies in achieving economic development in Angola.',
+        markscheme:'Level 1 [1-2]: Few concepts, basic knowledge. Level 2 [3-5]: Reasonable depth, some analysis. Level 3 [6-8]: Effective analysis, synthesis, text reference throughout.\n\nStrengths: Tax incentives attract FDI → employment and wages; devaluation reduces need for foreign exchange reserves; privatisation → competition, lower costs, consumer choice + government revenue; private infrastructure → FDI; market-oriented policies increase LRAS → lower inflation; tax incentives in rural areas → jobs and reduced inequality; banking reform → lower borrowing costs for businesses.\n\nLimitations: Privatisation of railways/telecoms may raise prices and worsen inequality; small manufacturing base limits diversification; removing food subsidies causes inflation and inequality in short run; reducing public debt worsens inequality; market policies need complementary interventionist policies (infrastructure); less exchange rate intervention may deter FDI; FDI increases private debt and servicing costs; market policies tend to widen inequality.',
+        hint: 'Define "market-oriented policies" AND "economic development" early. Evaluate means weigh strengths against limitations. Angola\'s context — 40% absolute poverty, oil dependence, 25%+ inflation — must be threaded through your answer.',
+        word_guide: '350–450 words recommended' }
+    ]
+  },
+  q4: {
+    id: 'q4', section: 'B', title: "Economic Growth in Laos",
+    topic: "Development Economics · FDI · Externalities",
+    extract: `<p><span class="para-num">1</span>The China–Laos railway is a major contributor to Laos' <strong>economic growth</strong>. This landlocked country is projected to grow 7% this year, though it still faces low incomes and over-reliance on agriculture.</p>
+    <p><span class="para-num">2</span>The 420 km railway will connect China to Laos and link Southeast Asia to Singapore. It will increase trade and tourism. The Lao government also plans up to 429 hydroelectric dams on the Mekong River by 2030, though environmentalists warn of serious ecosystem damage.</p>
+    <p><span class="para-num">3</span>Five years ago, Laos introduced a policy to privatize state-owned property to attract FDI. China invested in Laos' telecoms industry and helped launch Laos' first satellite, improving internet, health services and education in rural areas where 61% of the labour force work as farmers.</p>
+    <p><span class="para-num">4</span>The Lao government hopes Chinese investment brings technology and jobs to help citizens break out of the <strong>poverty trap</strong>. Six Chinese companies employ 50,000 workers on the railway, though these are mostly Chinese workers.</p>
+    <p><span class="para-num">5</span>Many fear a debt crisis: the US$6 billion railway is 60% funded by foreign investors. Laos' share is US$840 million — US$500 million from Chinese loans, the rest from the government budget.</p>`,
+    parts: [
+      { id:'a_i', label:'(a)(i)', marks:2, type:'essay',
+        q:'Define the term <em>economic growth</em> as indicated in the text (paragraph ①).',
+        markscheme:'Level 1 [1]: Growing economy OR increase in GDP. Level 2 [2]: An increase in real output over time / an increase in real GDP / an increase in potential output.',
+        hint:'The key word is "real" — why does this matter? Think about the difference between nominal and real GDP.' },
+      { id:'a_ii', label:'(a)(ii)', marks:2, type:'essay',
+        q:'Define the term <em>poverty trap</em> as indicated in the text (paragraph ④).',
+        markscheme:'Level 1 [1]: People cannot escape from poverty. Level 2 [2]: Any linked combination of factors causing poverty to be self-perpetuating — e.g. low income → low saving → low investment → low growth → low income; OR low income → low human capital → low productivity → low income.',
+        hint:'A poverty trap is a vicious cycle. Show the circular causation chain.' },
+      { id:'b', label:'(b)', marks:4, type:'mc_diagram',
+        q:'Using an AD/AS diagram, explain how the construction of the China–Laos railway will contribute to economic growth in Laos (paragraph ①).',
+        mc_items: [
+          { text: 'AD shifts to the right because government spending (investment) increases during construction', correct: true },
+          { text: 'SRAS shifts to the left because construction costs raise the price level', correct: false },
+          { text: 'Real GDP increases as a result of the rightward AD shift', correct: true },
+          { text: 'In the long run, LRAS shifts right because the railway increases productive capacity', correct: true },
+          { text: 'The price level may rise slightly due to higher AD (demand-pull pressure)', correct: true },
+          { text: 'AD shifts to the left because importing materials worsens the balance of payments', correct: false }
+        ],
+        mc_instruction: 'Select ALL statements that correctly describe the AD/AS diagram showing the railway\'s contribution to economic growth:',
+        explanation_prompt: 'Explain the mechanism through which the railway contributes to economic growth (2–3 sentences):',
+        markscheme: 'Level 1 [1-2]: AD/AS diagram showing AD shift right and real GDP increase OR explanation. Level 2 [3-4]: Diagram AND explanation. Accept LRAS shift right as alternative (increased productive capacity). Construction → higher G → AD shifts right → real GDP increases.',
+        hint: 'Construction is investment/government spending — a component of AD. The completed railway also has long-run supply-side effects.' },
+      { id:'c', label:'(c)', marks:4, type:'mc_diagram',
+        q:'Using an externalities diagram, explain why the construction of dams on the Mekong River might lead to market failure (paragraph ②).',
+        mc_items: [
+          { text: 'MSC (marginal social cost) lies above MPC (marginal private cost) due to external costs imposed on third parties', correct: true },
+          { text: 'The market produces at Qm where MPC = MPB, which is greater than the socially optimal quantity Qso', correct: true },
+          { text: 'There is a welfare loss to society — a deadweight welfare loss triangle', correct: true },
+          { text: 'MSB (marginal social benefit) lies above MPB because dams create positive externalities', correct: false },
+          { text: 'External costs include environmental damage: ecosystem destruction, reduced fish stocks, displaced communities', correct: true },
+          { text: 'The market overproduces dams relative to the socially efficient level because external costs are ignored', correct: true }
+        ],
+        mc_instruction: 'Select ALL statements that correctly describe the negative externality/market failure diagram for dam construction:',
+        explanation_prompt: 'Explain why this constitutes market failure in 2–3 sentences:',
+        markscheme: 'Level 1 [1-2]: Externality diagram with MSC above MPC and overproduction (Qm > Qso) OR explanation. Level 2 [3-4]: Correct diagram AND explanation — dams create external costs (ecosystem damage) so MSC > MPC; market produces at Qm (MPC=MPB) which exceeds socially optimal Qso, creating welfare loss.',
+        hint: 'Negative externalities mean the social cost exceeds the private cost. The market ignores external costs and therefore overproduces.' },
+      { id:'d', label:'(d)', marks:8, type:'essay_extended',
+        q:'Using information from the text/data and your knowledge of economics, evaluate the role of foreign direct investment in promoting economic development in Laos.',
+        markscheme:'Level 1 [1-2]: Few concepts, basic knowledge. Level 2 [3-5]: Reasonable depth, some analysis. Level 3 [6-8]: Effective analysis, synthesis, clear text references.\n\nStrengths of FDI: Reduces over-reliance on agriculture (low income sector); provides employment → breaks poverty trap; landlocked country → railway facilitates cheaper transport; develops tertiary sector via tourism; brings efficiency, expertise, technology; MNC training; finances infrastructure; generates tax revenue.\n\nLimitations of FDI: Most railway jobs go to Chinese workers, not locals; profit repatriation; MNC influence on politics and taxation; spending on infrastructure reduces funds for health/education; massive loans (US$500m from China) risk debt crisis; less strict labour/environment laws exploited; negative externalities from dams.',
+        hint: 'Define both "FDI" and "economic development" (not just growth — consider HDI dimensions). Use specific text evidence: 61% in agriculture, US$840m debt, 50,000 Chinese workers, satellite improving health/education.',
+        word_guide: '350–450 words recommended' }
+    ]
+  }
+};
+
+// ════════════════════════════════════════════════════════════
+// GOOGLE SHEETS SYNC
+// ════════════════════════════════════════════════════════════
+const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbyCRYjoqtk3kGO7-mTtk2H3b6kS937JX4cyWbnPl6rUzyJMY1suQrMWfdDrOUUnKc0j/exec';
+
+async function syncToSheets(qid, partId, record, isRetry, retryIndex) {
+  const indicator = document.getElementById('sync-indicator');
+  const dot = document.getElementById('sync-dot');
+  const txt = document.getElementById('sync-text');
+  // Show syncing state
+  if(indicator) { indicator.style.display = 'flex'; dot.style.background = '#f0c040'; txt.textContent = 'Syncing…'; }
+  try {
+    const q = QUESTIONS[qid];
+    const p = q.parts.find(pp => pp.id === partId);
+    const row = {
+      timestamp: record.timestamp || new Date().toLocaleString(),
+      studentName: studentName,
+      question: 'Q' + qid.replace('q','') + ' — ' + q.title,
+      part: p.label,
+      questionText: p.q.replace(/<[^>]*>/g,''),
+      marks: record.marks,
+      totalMarks: p.marks,
+      level: record.level || '',
+      attemptType: isRetry ? 'Re-attempt ' + retryIndex : 'Original',
+      answer: (record.answer || '').substring(0, 800),
+      feedback: (record.feedback || '').replace(/<[^>]*>/g,' ').substring(0, 800)
+    };
+    await fetch(SHEETS_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ rows: [row] })
+    });
+    // Show success (no-cors means we can't read response, but if no error thrown it sent)
+    if(indicator) { dot.style.background = 'var(--green-light)'; txt.textContent = 'Synced to Sheets ✓'; }
+    setTimeout(() => { if(indicator) indicator.style.display = 'none'; }, 3000);
+  } catch(e) {
+    // Silent fail — local storage is the backup
+    if(indicator) { dot.style.background = 'var(--red)'; txt.textContent = 'Sync failed (saved locally)'; }
+    setTimeout(() => { if(indicator) indicator.style.display = 'none'; }, 4000);
+    console.warn('Sheets sync failed:', e.message);
+  }
+}
+
+// ════════════════════════════════════════════════════════════
+// STATE
+// ════════════════════════════════════════════════════════════
+let studentName = '';
+let results = {}; // { 'q1_a_i': { marks, level, feedback, answer, timestamp, retries: [{...}] } }
+
+function loadState() {
+  try {
+    const s = localStorage.getItem('ib_econ_name'); if(s) studentName = s;
+    const r = localStorage.getItem('ib_econ_results'); if(r) results = JSON.parse(r);
+  } catch(e) {}
+}
+function saveState() {
+  try {
+    localStorage.setItem('ib_econ_name', studentName);
+    localStorage.setItem('ib_econ_results', JSON.stringify(results));
+  } catch(e) {}
+}
+
+// ════════════════════════════════════════════════════════════
+// NAVIGATION
+// ════════════════════════════════════════════════════════════
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+function showDash() {
+  showPage('page-dashboard');
+  document.getElementById('nav-dash').classList.add('active');
+  renderDash();
+}
+function startSession() {
+  const n = document.getElementById('name-input').value.trim();
+  if(!n) { document.getElementById('name-input').focus(); return; }
+  studentName = n;
+  saveState();
+  document.getElementById('student-badge').textContent = '👤 ' + n;
+  document.getElementById('student-badge').style.display = 'block';
+  showDash();
+}
+
+// ════════════════════════════════════════════════════════════
+// DASHBOARD RENDER
+// ════════════════════════════════════════════════════════════
+function renderDash() {
+  document.getElementById('dash-greeting').textContent = 'Welcome, ' + studentName + '!';
+  
+  // Stats
+  let totalParts = 0, done = 0, totalMarks = 0, earned = 0;
+  Object.values(QUESTIONS).forEach(q => {
+    q.parts.forEach(p => {
+      totalParts++;
+      const key = q.id + '_' + p.id;
+      totalMarks += p.marks;
+      if(results[key]) { done++; earned += results[key].marks || 0; }
+    });
+  });
+  const pct = totalParts > 0 ? Math.round(done/totalParts*100) : 0;
+  document.getElementById('stats-row').innerHTML = `
+    <div class="stat-card"><div class="num">${done}/${totalParts}</div><div class="lbl">Parts Attempted</div></div>
+    <div class="stat-card"><div class="num">${earned}/${totalMarks}</div><div class="lbl">Marks Earned</div></div>
+    <div class="stat-card"><div class="num" style="color:var(--green)">${pct}%</div><div class="lbl">Completion</div></div>
+    <div class="stat-card"><div class="num" style="color:var(--gold)">${countRetries()}</div><div class="lbl">Re-attempts</div></div>
+  `;
+  document.getElementById('progress-label').textContent = done + ' of ' + totalParts + ' parts complete';
+  document.getElementById('progress-bar').style.width = pct + '%';
+
+  // Grids
+  renderQGrid('sa-grid', ['q1','q2']);
+  renderQGrid('sb-grid', ['q3','q4']);
+  renderHeatmap();
+}
+
+function countRetries() {
+  let n = 0;
+  Object.values(results).forEach(r => { if(r.retries) n += r.retries.length; });
+  return n;
+}
+
+function renderQGrid(elId, qIds) {
+  const el = document.getElementById(elId);
+  el.innerHTML = qIds.map(qid => {
+    const q = QUESTIONS[qid];
+    const doneParts = q.parts.filter(p => results[qid+'_'+p.id]);
+    const allDone = doneParts.length === q.parts.length;
+    const pips = q.parts.map(p => {
+      const key = qid + '_' + p.id;
+      const r = results[key];
+      let cls = '', txt = p.label;
+      if(r) { cls = 'done'; }
+      if(r && r.retries && r.retries.length) cls += ' retry';
+      return `<span class="score-pip ${r ? 'done' : ''} ${r && r.retries && r.retries.length ? 'retry' : ''}">${p.label} ${r ? (r.marks+'/'+p.marks) : '—'}</span>`;
+    }).join('');
+    return `<div class="q-card ${allDone?'done':''}" onclick="openQuestion('${qid}')">
+      <div class="q-label">${q.section==='A'?'<span class=tag-section-a>Section A</span>':'<span class=tag-section-b>Section B</span>'} · Question ${qid.toUpperCase().replace('Q','')}</div>
+      <h3>${q.title}</h3>
+      <p>${q.topic}</p>
+      <div class="q-score">${pips}</div>
+    </div>`;
+  }).join('');
+}
+
+function renderHeatmap() {
+  const el = document.getElementById('heatmap');
+  el.innerHTML = Object.values(QUESTIONS).map(q => {
+    const parts = q.parts.map(p => {
+      const key = q.id + '_' + p.id;
+      const r = results[key];
+      let cls = 'none', title = 'Not attempted';
+      if(r) {
+        if(r.level >= 3 || r.marks === p.marks) { cls = 'full'; title = 'Level 3 / Full marks'; }
+        else if(r.level === 2) { cls = 'good'; title = 'Level 2'; }
+        else { cls = 'partial'; title = 'Level 1'; }
+      }
+      return `<div class="heat-pip ${cls}" title="${p.label}: ${title}">${p.label}</div>`;
+    }).join('');
+    return `<div class="heatmap-row"><div class="heatmap-label">Q${q.id.replace('q','')} — ${q.title.split(' ').slice(0,3).join(' ')}…</div><div class="heatmap-parts">${parts}</div></div>`;
+  }).join('');
+}
+
+// ════════════════════════════════════════════════════════════
+// OPEN QUESTION
+// ════════════════════════════════════════════════════════════
+function openQuestion(qid) {
+  const q = QUESTIONS[qid];
+  const el = document.getElementById('q-page-content');
+  el.innerHTML = `
+    <div class="q-header">
+      <div class="q-id">Question ${qid.replace('q','').toUpperCase()}</div>
+      <h2>${q.title}</h2>
+      <span class="${q.section==='A'?'tag-section-a':'tag-section-b'}">Section ${q.section}</span>
+      <span class="marks-badge">20 marks total</span>
+    </div>
+    <div class="q-body">
+      <div class="extract-box">
+        <h3>📄 Extract: ${q.title}</h3>
+        ${q.extract}
+      </div>
+      ${q.parts.map(p => renderPartCard(qid, p)).join('')}
+      <div style="margin-top:24px;">
+        <button class="tool-btn" onclick="showDash()">← Back to Dashboard</button>
+      </div>
+    </div>
+  `;
+  showPage('page-question');
+  document.getElementById('nav-dash').classList.remove('active');
+}
+
+function renderPartCard(qid, p) {
+  const key = qid + '_' + p.id;
+  const existing = results[key];
+  const isRetry = !!existing;
+
+  let inputHtml = '';
+  if(p.type === 'essay' || p.type === 'essay_extended') {
+    const wg = p.word_guide ? `<div style="font-size:0.75rem;color:var(--grey-600);margin-bottom:8px;">📝 ${p.word_guide}</div>` : '';
+    inputHtml = `
+      ${wg}
+      <textarea class="answer-textarea" id="ans_${key}" placeholder="Write your answer here…" ${existing&&!isRetry?'':''}>${existing&&!existing._retrying ? existing.answer||'' : ''}</textarea>
+      <div style="margin-top:8px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+        <button class="submit-part-btn" id="btn_${key}" onclick="submitPart('${qid}','${p.id}')">
+          ${existing ? '✓ Re-submit' : 'Get AI Examiner Feedback →'}
+        </button>
+        <span style="font-size:0.78rem;color:var(--text-soft);">${p.marks} mark${p.marks>1?'s':''}</span>
+        ${p.hint ? `<button onclick="toggleHint('hint_${key}')" style="background:none;border:1px dashed var(--grey-400);color:var(--text-soft);border-radius:6px;padding:3px 10px;font-size:0.75rem;cursor:pointer;">💡 Hint</button>` : ''}
+      </div>
+      ${p.hint ? `<div id="hint_${key}" style="display:none;margin-top:8px;background:var(--blue-pale);border-radius:8px;padding:10px 14px;font-size:0.82rem;color:var(--blue);line-height:1.5;">${p.hint}</div>` : ''}
+    `;
+  } else if(p.type === 'mc_diagram') {
+    const opts = p.mc_items.map((item, i) => `
+      <label class="mc-option" id="opt_${key}_${i}">
+        <input type="checkbox" name="${key}" value="${i}" onchange="updateMCStyle('${key}',${i})"> ${item.text}
+      </label>`).join('');
+    inputHtml = `
+      <div style="font-size:0.82rem;color:var(--navy);font-weight:600;margin-bottom:8px;">${p.mc_instruction}</div>
+      <div class="mc-options" id="mc_${key}">${opts}</div>
+      <div style="margin-top:14px;">
+        <div style="font-size:0.82rem;color:var(--navy);font-weight:600;margin-bottom:6px;">${p.explanation_prompt}</div>
+        <textarea class="answer-textarea" id="ans_${key}" placeholder="Your explanation here…" style="min-height:80px;"></textarea>
+      </div>
+      <div style="margin-top:8px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+        <button class="submit-part-btn" id="btn_${key}" onclick="submitPart('${qid}','${p.id}')">
+          ${existing ? '✓ Re-submit' : 'Get AI Examiner Feedback →'}
+        </button>
+        <span style="font-size:0.78rem;color:var(--text-soft);">${p.marks} mark${p.marks>1?'s':''}</span>
+        ${p.hint ? `<button onclick="toggleHint('hint_${key}')" style="background:none;border:1px dashed var(--grey-400);color:var(--text-soft);border-radius:6px;padding:3px 10px;font-size:0.75rem;cursor:pointer;">💡 Hint</button>` : ''}
+      </div>
+      ${p.hint ? `<div id="hint_${key}" style="display:none;margin-top:8px;background:var(--blue-pale);border-radius:8px;padding:10px 14px;font-size:0.82rem;color:var(--blue);line-height:1.5;">${p.hint}</div>` : ''}
+    `;
+  }
+
+  // Existing feedback
+  let feedbackHtml = '';
+  if(existing) {
+    feedbackHtml = renderFeedbackBox(existing, false);
+    if(existing.retries && existing.retries.length) {
+      feedbackHtml += existing.retries.map((r,i) => renderFeedbackBox(r, true, i+1)).join('');
+    }
+  }
+
+  return `
+    <div class="part-card" id="card_${key}">
+      <div class="part-header">
+        <span class="part-id">${p.label}</span>
+        <span class="part-marks">[${p.marks} mark${p.marks>1?'s':''}]</span>
+      </div>
+      <div class="part-body">
+        <div class="question-text">${p.q}</div>
+        ${inputHtml}
+        <div id="fb_${key}">${feedbackHtml}</div>
+      </div>
+    </div>
+  `;
+}
+
+function renderFeedbackBox(r, isRetry, retryNum) {
+  const lvlClass = r.level >= 3 ? 'level3' : r.level === 2 ? 'level2' : 'level1';
+  const lvlText = r.level ? 'Level ' + r.level : '';
+  return `
+    <div class="feedback-box ${isRetry ? 'retry-result' : 'result'}">
+      ${isRetry ? `<div class="retry-note">🔄 Re-attempt ${retryNum} · ${r.timestamp}</div>` : ''}
+      <div class="feedback-header">
+        <span class="mark-badge ${lvlClass}">${r.marks}/${r.totalMarks} marks${lvlText ? ' · ' + lvlText : ''}</span>
+        <span class="fb-label">${isRetry ? 'Re-attempt Feedback' : 'Examiner Feedback'}</span>
+      </div>
+      <div class="feedback-text">${r.feedback}</div>
+    </div>
+  `;
+}
+
+function toggleHint(id) {
+  const el = document.getElementById(id);
+  if(el) el.style.display = el.style.display === 'none' ? 'block' : 'none';
+}
+function updateMCStyle(key, i) {}
+
+// ════════════════════════════════════════════════════════════
+// SUBMIT
+// ════════════════════════════════════════════════════════════
+async function submitPart(qid, partId) {
+  const q = QUESTIONS[qid];
+  const p = q.parts.find(pp => pp.id === partId);
+  const key = qid + '_' + partId;
+  const btn = document.getElementById('btn_' + key);
+  const fbEl = document.getElementById('fb_' + key);
+  const existing = results[key];
+  const isRetry = !!existing;
+
+  // Gather answer
+  let answer = '';
+  if(p.type === 'mc_diagram') {
+    const checkboxes = document.querySelectorAll(`input[name="${key}"]:checked`);
+    const selected = Array.from(checkboxes).map(cb => parseInt(cb.value));
+    const correct = p.mc_items.map((item, i) => item.correct ? i : -1).filter(i => i >= 0);
+    const selectedTexts = selected.map(i => p.mc_items[i].text);
+    answer = 'Selected options: ' + selectedTexts.join(' | ') + '\n\nExplanation: ' + (document.getElementById('ans_' + key)?.value || '');
+  } else {
+    answer = document.getElementById('ans_' + key)?.value?.trim() || '';
+  }
+
+  if(!answer || answer.length < 5) {
+    alert('Please write an answer before submitting.');
+    return;
+  }
+
+  btn.disabled = true;
+  fbEl.innerHTML += `<div class="feedback-box loading"><div class="spinner"></div> AI Examiner is reviewing your answer…</div>`;
+
+  // Build prompt
+  const prompt = buildPrompt(q, p, answer, isRetry);
+  
+  try {
+    const resp = await callClaude(prompt);
+    const parsed = parseFeedback(resp, p.marks);
+    const now = new Date().toLocaleString();
+    
+    if(!isRetry) {
+      results[key] = { marks: parsed.marks, totalMarks: p.marks, level: parsed.level, feedback: parsed.feedback, answer, timestamp: now };
+      saveState();
+      syncToSheets(qid, partId, results[key], false, 0);
+    } else {
+      if(!results[key].retries) results[key].retries = [];
+      const retryRecord = { marks: parsed.marks, totalMarks: p.marks, level: parsed.level, feedback: parsed.feedback, answer, timestamp: now };
+      results[key].retries.push(retryRecord);
+      saveState();
+      syncToSheets(qid, partId, retryRecord, true, results[key].retries.length);
+    }
+
+    // Re-render feedback
+    const existing2 = results[key];
+    let allFb = renderFeedbackBox(existing2, false);
+    if(existing2.retries) allFb += existing2.retries.map((r,i) => renderFeedbackBox(r, true, i+1)).join('');
+    fbEl.innerHTML = allFb;
+
+  } catch(e) {
+    fbEl.innerHTML = `<div class="feedback-box result"><div class="feedback-text" style="color:var(--red);">⚠ Could not connect to the AI examiner. Please check your internet connection and try again.<br><small>${e.message}</small></div></div>`;
+  }
+  btn.disabled = false;
+}
+
+function buildPrompt(q, p, answer, isRetry) {
+  return `You are an experienced IB Economics examiner marking a Standard Level Paper 2 (May 2021).
+
+QUESTION: ${p.label} [${p.marks} marks]
+"${p.q.replace(/<[^>]*>/g,'')}"
+
+MARKSCHEME:
+${p.markscheme}
+
+STUDENT'S ANSWER:
+${answer}
+
+${isRetry ? 'NOTE: This is a RE-ATTEMPT. The student has tried before. Acknowledge any improvement.\n\n' : ''}
+
+Instructions:
+1. Award marks strictly according to the IB markscheme bands provided.
+2. For 2-mark questions: award 1 (Level 1, vague) or 2 (Level 2, accurate/precise).
+3. For 4-mark diagram questions: award 1-2 (Level 1, diagram OR explanation) or 3-4 (Level 2, diagram AND explanation). Since this is a structured MC activity, evaluate whether they identified the correct diagram features AND gave a good explanation.
+4. For 8-mark evaluate/discuss questions: award 1-2 (Level 1), 3-5 (Level 2), or 6-8 (Level 3).
+5. Give clear, constructive written feedback explaining what was done well and what needs improvement.
+6. Be encouraging but academically precise.
+7. Always mention whether the student referenced the text/context (required for full marks on 8-mark questions).
+
+Respond ONLY in this exact format:
+MARKS: [number]
+LEVEL: [1, 2, or 3]
+FEEDBACK: [your detailed written feedback here — use HTML for formatting: <strong>, <ul><li>, etc.]`;
+}
+
+async function callClaude(prompt) {
+  const response = await fetch("https://api.anthropic.com/v1/messages", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      model: "claude-sonnet-4-20250514",
+      max_tokens: 1000,
+      messages: [{ role: "user", content: prompt }]
+    })
+  });
+  if(!response.ok) throw new Error('API error ' + response.status);
+  const data = await response.json();
+  return data.content[0].text;
+}
+
+function parseFeedback(text, totalMarks) {
+  const mMatch = text.match(/MARKS:\s*(\d+)/i);
+  const lMatch = text.match(/LEVEL:\s*(\d+)/i);
+  const fMatch = text.match(/FEEDBACK:\s*([\s\S]+)/i);
+  const marks = mMatch ? Math.min(parseInt(mMatch[1]), totalMarks) : Math.floor(totalMarks/2);
+  const level = lMatch ? parseInt(lMatch[1]) : 1;
+  const feedback = fMatch ? fMatch[1].trim() : text;
+  return { marks, level, feedback };
+}
+
+// ════════════════════════════════════════════════════════════
+// EXPORT
+// ════════════════════════════════════════════════════════════
+function openExport() {
+  document.getElementById('export-name').textContent = studentName;
+  document.getElementById('export-modal').style.display = 'block';
+}
+function closeExport(e) {
+  if(!e || e.target.id === 'export-modal' || !e.target.closest('.modal-box')) {
+    document.getElementById('export-modal').style.display = 'none';
+  }
+}
+
+function exportCSV() {
+  let csv = 'Student Name,Question,Part,Question Text,Marks Awarded,Total Marks,Level,Attempt Type,Timestamp,Answer\n';
+  Object.values(QUESTIONS).forEach(q => {
+    q.parts.forEach(p => {
+      const key = q.id + '_' + p.id;
+      const r = results[key];
+      if(r) {
+        csv += csvRow([studentName, q.title, p.label, p.q.replace(/<[^>]*>/g,''), r.marks, p.marks, r.level||'', 'Original', r.timestamp||'', r.answer||'']);
+        if(r.retries) r.retries.forEach((rr,i) => {
+          csv += csvRow([studentName, q.title, p.label, p.q.replace(/<[^>]*>/g,''), rr.marks, p.marks, rr.level||'', 'Re-attempt '+(i+1), rr.timestamp||'', rr.answer||'']);
+        });
+      }
+    });
+  });
+  const blob = new Blob([csv], {type:'text/csv'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `IB_Econ_SL_P2_${studentName.replace(/\s/g,'_')}_Results.csv`;
+  a.click();
+  closeExport();
+}
+function csvRow(arr) { return arr.map(v => '"' + String(v||'').replace(/"/g,'""') + '"').join(',') + '\n'; }
+
+function exportPDF() {
+  const w = window.open('', '_blank');
+  let html = `<html><head><title>IB Economics Results — ${studentName}</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 40px; color: #1a1a2e; font-size: 13px; }
+    h1 { font-size: 22px; color: #0a2540; border-bottom: 3px solid #1a6eb5; padding-bottom: 8px; }
+    h2 { font-size: 15px; color: #0a2540; margin-top: 20px; background: #e8f4fd; padding: 6px 10px; border-radius: 4px; }
+    h3 { font-size: 13px; color: #1a6eb5; margin: 10px 0 4px; }
+    .meta { color: #666; font-size: 12px; margin-bottom: 20px; }
+    .part { border: 1px solid #dde5ef; border-radius: 6px; padding: 12px; margin-bottom: 10px; }
+    .score { background: #0a2540; color: white; display: inline-block; padding: 2px 10px; border-radius: 4px; font-weight: bold; font-size: 12px; }
+    .retry { background: #e67e22; color: white; display: inline-block; padding: 2px 10px; border-radius: 4px; font-size: 11px; margin-left: 8px; }
+    .answer-box { background: #f7fafc; border: 1px solid #eef2f7; border-radius: 4px; padding: 8px; margin: 6px 0; font-size: 12px; white-space: pre-wrap; }
+    .feedback-box { background: #e6f7f1; border: 1px solid #0f7c5a; border-radius: 4px; padding: 8px; margin: 6px 0; font-size: 12px; }
+    .retry-box { background: #fff9f0; border: 1px solid #f0c070; border-radius: 4px; padding: 8px; margin: 6px 0; font-size: 12px; }
+    .summary-table { width: 100%; border-collapse: collapse; margin: 16px 0; }
+    .summary-table th { background: #0a2540; color: white; padding: 6px 10px; text-align: left; }
+    .summary-table td { border-bottom: 1px solid #eef2f7; padding: 5px 10px; }
+    .summary-table tr:nth-child(even) td { background: #f7fafc; }
+    @media print { body { margin: 20px; } }
+  </style></head><body>
+  <h1>IB Economics SL · Paper 2 · Results Report</h1>
+  <p class="meta">Student: <strong>${studentName}</strong> &nbsp;|&nbsp; Paper: May 2021 &nbsp;|&nbsp; Exported: ${new Date().toLocaleString()}</p>`;
+
+  // Summary table
+  let summaryRows = '';
+  let grandTotal = 0, grandMax = 0;
+  Object.values(QUESTIONS).forEach(q => {
+    q.parts.forEach(p => {
+      const key = q.id + '_' + p.id;
+      const r = results[key];
+      const latest = r && r.retries && r.retries.length ? r.retries[r.retries.length-1] : r;
+      const m = latest ? latest.marks : '—';
+      const orig = r ? r.marks : '—';
+      if(r) { grandTotal += r.marks; grandMax += p.marks; }
+      summaryRows += `<tr><td>${q.title}</td><td>${p.label}</td><td>${p.marks}</td><td>${orig}</td><td>${r && r.retries && r.retries.length ? r.retries[r.retries.length-1].marks : '—'}</td></tr>`;
+    });
+  });
+  html += `<h2>📊 Summary</h2>
+  <table class="summary-table">
+    <tr><th>Question</th><th>Part</th><th>Total Marks</th><th>Original Score</th><th>Best Re-attempt</th></tr>
+    ${summaryRows}
+    <tr><td colspan="2"><strong>TOTAL</strong></td><td><strong>${grandMax}</strong></td><td><strong>${grandTotal}</strong></td><td></td></tr>
+  </table>`;
+
+  // Detailed answers
+  Object.values(QUESTIONS).forEach(q => {
+    const hasAny = q.parts.some(p => results[q.id+'_'+p.id]);
+    if(!hasAny) return;
+    html += `<h2>Question ${q.id.replace('q','').toUpperCase()}: ${q.title}</h2>`;
+    q.parts.forEach(p => {
+      const key = q.id + '_' + p.id;
+      const r = results[key];
+      if(!r) return;
+      html += `<div class="part">
+        <h3>${p.label} [${p.marks} marks] — ${p.q.replace(/<[^>]*>/g,'')}</h3>
+        <span class="score">${r.marks}/${p.marks} marks · Level ${r.level||'—'}</span>
+        <div class="answer-box"><strong>Answer:</strong> ${r.answer||''}</div>
+        <div class="feedback-box"><strong>Examiner Feedback:</strong> ${r.feedback.replace(/<[^>]*>/g,' ')}</div>`;
+      if(r.retries) r.retries.forEach((rr,i) => {
+        html += `<div class="retry-box"><span class="retry">Re-attempt ${i+1} · ${rr.timestamp}</span> Score: ${rr.marks}/${p.marks} · Level ${rr.level||'—'}<br>
+          <strong>Answer:</strong> ${rr.answer||''}<br><strong>Feedback:</strong> ${rr.feedback.replace(/<[^>]*>/g,' ')}</div>`;
+      });
+      html += `</div>`;
+    });
+  });
+  html += `</body></html>`;
+  w.document.write(html);
+  w.document.close();
+  setTimeout(() => w.print(), 500);
+  closeExport();
+}
+
+// ════════════════════════════════════════════════════════════
+// RESET
+// ════════════════════════════════════════════════════════════
+function resetAll() { document.getElementById('reset-modal').style.display = 'block'; }
+function closeReset(e) {
+  if(!e || e.target.id === 'reset-modal' || !e.target.closest('.modal-box')) {
+    document.getElementById('reset-modal').style.display = 'none';
+  }
+}
+function confirmReset() {
+  results = {};
+  saveState();
+  closeReset();
+  renderDash();
+}
+
+// ════════════════════════════════════════════════════════════
+// INIT
+// ════════════════════════════════════════════════════════════
+window.onload = function() {
+  loadState();
+  if(studentName) {
+    document.getElementById('name-input').value = studentName;
+    document.getElementById('student-badge').textContent = '👤 ' + studentName;
+    document.getElementById('student-badge').style.display = 'block';
+    showDash();
+  }
+};
+</script>
+</body>
+</html>
